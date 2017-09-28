@@ -11,18 +11,73 @@
     <script src="jquery.japan-map.min.js"></script>
     <script>
         $(function(){
+            var areas = [
+              {"code": 1 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[1]},
+              {"code": 2 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[2]},
+              {"code": 3 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[3]},
+              {"code": 4 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[4]},
+              {"code": 5 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[5]},
+              {"code": 6 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[6]},
+              {"code": 7 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[7]},
+              {"code": 8 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[8]},
+              {"code": 9 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[9]},
+              {"code": 10 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[10]},
+              {"code": 11 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[11]},
+              {"code": 12 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[12]},
+              {"code": 13 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[13]},
+              {"code": 14 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[14]},
+              {"code": 15 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[15]},
+              {"code": 16 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[16]},
+              {"code": 17 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[17]},
+              {"code": 18 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[18]},
+              {"code": 19 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[19]},
+              {"code": 20 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[20]},
+              {"code": 21 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[21]},
+              {"code": 22 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[22]},
+              {"code": 23 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[23]},
+              {"code": 24 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[24]},
+              {"code": 25 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[25]},
+              {"code": 26 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[26]},
+              {"code": 27 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[27]},
+              {"code": 28 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[28]},
+              {"code": 29 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[29]},
+              {"code": 30 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[30]},
+              {"code": 31 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[31]},
+              {"code": 32 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[32]},
+              {"code": 33 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[33]},
+              {"code": 34 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[34]},
+              {"code": 35 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[35]},
+              {"code": 36 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[36]},
+              {"code": 37 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[37]},
+              {"code": 38 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[38]},
+              {"code": 39 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[39]},
+              {"code": 40 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[40]},
+              {"code": 41 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[41]},
+              {"code": 42 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[42]},
+              {"code": 43 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[43]},
+              {"code": 44 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[44]},
+              {"code": 45 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[45]},
+              {"code": 46 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[46]},
+              {"code": 47 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[47]},
+            ];
+
             $("#map-container").japanMap({
+              areas: areas,
               width: 900,
               showsPrefectureName: true,
               drawsBoxLine: true,
               prefectureNameType: "short",
               lineColor : "#a0a0a0",
               lineWidth: 1,
-              backgroundColor : "#f2fcff",
               borderLineColor: "#f2fcff",
               onSelect : function(data){
-                alert(data.name + " でよろしいですか？");
-                window.open("questions/" + data.englishName + ".html");
+                if (!confirm(data.name + " でよろしいですか？")) {
+                  return false;
+                } else {
+                  window.open("questions/" + data.englishName + ".html");
+                  console.log(data);
+                  data.area.color = "#f7a6a6";
+                }
               },
               color: "#696969",
             });
