@@ -61,6 +61,8 @@
               {"code": 47 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[47]},
             ];
 
+          var selected = [];
+
             $("#map-container").japanMap({
               areas: areas,
               width: 900,
@@ -71,12 +73,17 @@
               lineWidth: 1,
               borderLineColor: "#f2fcff",
               onSelect : function(data){
+                if (selected[data.code] == true) {
+                  return;
+                }
+
                 if (!confirm(data.name + " でよろしいですか？")) {
                   return false;
                 } else {
                   window.open("questions/" + data.englishName + ".html");
                   console.log(data);
                   data.area.color = "#f7a6a6";
+                  selected[data.code] = true;
                 }
               },
               color: "#696969",
