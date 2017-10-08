@@ -61,9 +61,11 @@
               {"code": 47 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[47]},
             ];
 
-          var selected = [];
+            var selected = [];
+            var teamColor = "";
 
             $("#map-container").japanMap({
+              movesIslands: true,
               areas: areas,
               width: 900,
               showsPrefectureName: true,
@@ -72,17 +74,25 @@
               lineColor : "#a0a0a0",
               lineWidth: 1,
               borderLineColor: "#f2fcff",
+              borderLineWith: 20,
               onSelect : function(data){
                 if (selected[data.code] == true) {
                   return;
                 }
 
+                var selectedTeam = $(':radio[name="team"]:checked').val();
+                if (selectedTeam == 'a') {
+                  teamColor = "#a7a5ea";
+                } else if (selectedTeam == 'b') {
+                  teamColor = "#84b0f6";
+                } else {
+                  teamColor = "#52d49c";
+                }
+
                 if (!confirm(data.name + " でよろしいですか？")) {
                   return false;
                 } else {
-                  window.open("questions/" + data.englishName + ".html");
-                  console.log(data);
-                  data.area.color = "#f7a6a6";
+                  data.area.color = teamColor;
                   selected[data.code] = true;
                 }
               },
@@ -90,8 +100,24 @@
             });
         });
     </script>
+    <style type="text/css">
+      .box {
+        float: left;
+        margin-right: 20px;
+      }
+    </style>
 </head>
 <body>
-<div id="map-container"></div>
+<div class="box">
+  <div id="map-container"></div>
+  <div>
+    <input type="radio" name="team" value="a" checked="checked">チームA
+    <input type="radio" name="team" value="b">チームB
+    <input type="radio" name="team" value="c">チームC
+  </div>
+</div>
+<div>
+ <a target="blank" href="">北海道</a>
+</div>
 </body>
 </html>
