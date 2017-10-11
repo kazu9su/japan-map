@@ -5,119 +5,206 @@
     <title>Japan Map - EXAMPLE 1</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <script
-      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
-      crossorigin="anonymous"></script>
+      src="./jquery-3.2.1.min.js"
+      ></script>
     <script src="jquery.japan-map.min.js"></script>
     <script>
-        $(function(){
-            var areas = [
-              {"code": 1 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[1]},
-              {"code": 2 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[2]},
-              {"code": 3 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[3]},
-              {"code": 4 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[4]},
-              {"code": 5 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[5]},
-              {"code": 6 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[6]},
-              {"code": 7 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[7]},
-              {"code": 8 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[8]},
-              {"code": 9 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[9]},
-              {"code": 10 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[10]},
-              {"code": 11 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[11]},
-              {"code": 12 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[12]},
-              {"code": 13 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[13]},
-              {"code": 14 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[14]},
-              {"code": 15 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[15]},
-              {"code": 16 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[16]},
-              {"code": 17 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[17]},
-              {"code": 18 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[18]},
-              {"code": 19 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[19]},
-              {"code": 20 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[20]},
-              {"code": 21 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[21]},
-              {"code": 22 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[22]},
-              {"code": 23 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[23]},
-              {"code": 24 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[24]},
-              {"code": 25 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[25]},
-              {"code": 26 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[26]},
-              {"code": 27 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[27]},
-              {"code": 28 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[28]},
-              {"code": 29 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[29]},
-              {"code": 30 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[30]},
-              {"code": 31 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[31]},
-              {"code": 32 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[32]},
-              {"code": 33 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[33]},
-              {"code": 34 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[34]},
-              {"code": 35 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[35]},
-              {"code": 36 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[36]},
-              {"code": 37 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[37]},
-              {"code": 38 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[38]},
-              {"code": 39 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[39]},
-              {"code": 40 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[40]},
-              {"code": 41 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[41]},
-              {"code": 42 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[42]},
-              {"code": 43 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[43]},
-              {"code": 44 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[44]},
-              {"code": 45 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[45]},
-              {"code": 46 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[46]},
-              {"code": 47 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[47]},
-            ];
 
-            var selected = [];
-            var teamColor = "";
+      function sound() {
+        $( '#sound' ).get(0).play() ;
+      }
 
-            $("#map-container").japanMap({
-              movesIslands: true,
-              areas: areas,
-              width: 900,
-              showsPrefectureName: true,
-              drawsBoxLine: true,
-              prefectureNameType: "short",
-              lineColor : "#a0a0a0",
-              lineWidth: 1,
-              borderLineColor: "#f2fcff",
-              borderLineWith: 20,
-              onSelect : function(data){
-                if (selected[data.code] == true) {
-                  return;
-                }
+      $(function(){
+        var areas = [
+          {"code": 1 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[1]},
+          {"code": 2 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[2]},
+          {"code": 3 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[3]},
+          {"code": 4 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[4]},
+          {"code": 5 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[5]},
+          {"code": 6 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[6]},
+          {"code": 7 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[7]},
+          {"code": 8 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[8]},
+          {"code": 9 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[9]},
+          {"code": 10 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[10]},
+          {"code": 11 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[11]},
+          {"code": 12 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[12]},
+          {"code": 13 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[13]},
+          {"code": 14 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[14]},
+          {"code": 15 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[15]},
+          {"code": 16 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[16]},
+          {"code": 17 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[17]},
+          {"code": 18 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[18]},
+          {"code": 19 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[19]},
+          {"code": 20 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[20]},
+          {"code": 21 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[21]},
+          {"code": 22 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[22]},
+          {"code": 23 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[23]},
+          {"code": 24 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[24]},
+          {"code": 25 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[25]},
+          {"code": 26 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[26]},
+          {"code": 27 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[27]},
+          {"code": 28 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[28]},
+          {"code": 29 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[29]},
+          {"code": 30 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[30]},
+          {"code": 31 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[31]},
+          {"code": 32 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[32]},
+          {"code": 33 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[33]},
+          {"code": 34 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[34]},
+          {"code": 35 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[35]},
+          {"code": 36 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[36]},
+          {"code": 37 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[37]},
+          {"code": 38 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[38]},
+          {"code": 39 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[39]},
+          {"code": 40 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[40]},
+          {"code": 41 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[41]},
+          {"code": 42 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[42]},
+          {"code": 43 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[43]},
+          {"code": 44 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[44]},
+          {"code": 45 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[45]},
+          {"code": 46 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[46]},
+          {"code": 47 , "color":"#eee8aa", "hoverColor":"#f08080", "prefectures":[47]},
+        ];
 
-                var selectedTeam = $(':radio[name="team"]:checked').val();
-                if (selectedTeam == 'a') {
-                  teamColor = "#a7a5ea";
-                } else if (selectedTeam == 'b') {
-                  teamColor = "#84b0f6";
-                } else {
-                  teamColor = "#52d49c";
-                }
+        var selected = [];
+        var teamColor = "";
 
-                if (!confirm(data.name + " でよろしいですか？")) {
-                  return false;
-                } else {
-                  data.area.color = teamColor;
-                  selected[data.code] = true;
-                }
-              },
-              color: "#696969",
-            });
+        $("#map-container").japanMap({
+          backgroundColor: "lightgray",
+          movesIslands: true,
+          areas: areas,
+          width: 900,
+          showsPrefectureName: true,
+          drawsBoxLine: true,
+          prefectureNameType: "short",
+          lineColor : "#a0a0a0",
+          lineWidth: 1,
+          borderLineColor: "#f2fcff",
+          borderLineWith: 20,
+          onSelect : function(data){
+            if (selected[data.code] == true) {
+              return;
+            }
+
+            var selectedTeam = $(':radio[name="team"]:checked').val();
+            if (selectedTeam == 'a') {
+              teamColor = "#a7a5ea";
+            } else if (selectedTeam == 'b') {
+              teamColor = "#84b0f6";
+            } else {
+              teamColor = "#52d49c";
+            }
+
+            if (!confirm(data.name + " でよろしいですか？")) {
+              return false;
+            } else {
+              data.area.color = teamColor;
+              selected[data.code] = true;
+            }
+          },
+          color: "#696969",
         });
+      });
     </script>
     <style type="text/css">
       .box {
         float: left;
-        margin-right: 20px;
+        margin: 10px;
+      }
+      .boxContainer {
+        overflow: hidden;
+      }
+      /* clearfix */
+      .boxContainer:before,
+      .boxContainer:after {
+          content: "";
+          display: table;
+      }
+
+      .boxContainer:after {
+          clear: both;
+      }
+      .questions {
+        margin-top: 450px;
+        margin-left: 50px;
+        padding: 10px;
+        background-color: #ffffff;
+        width: 400px;
+      }
+      .team {
+        padding: 10px;
+          background-color: #ffffff;
+      }
+      body {
+        background-image: url("img/bg_B.jpg");
+        background-size: cover;
       }
     </style>
 </head>
 <body>
-<div class="box">
-  <div id="map-container"></div>
-  <div>
-    <input type="radio" name="team" value="a" checked="checked">チームA
-    <input type="radio" name="team" value="b">チームB
-    <input type="radio" name="team" value="c">チームC
+<div class="boxContainer">
+  <div id="map-container" class="box"></div>
+  <div class="box questions">
+    <a target="blank" href="./questions/北海道.html" class="btn" onClick="sound()">北海道</a>
+    <a target="blank" href="./questions/青森県.html" onClick="sound()">青森県</a>
+    <a target="blank" href="./questions/秋田県.html" onClick="sound()">秋田県</a>
+    <a target="blank" href="./questions/岩手県.html" onClick="sound()">岩手県</a>
+    <a target="blank" href="./questions/山形県.html" onClick="sound()">山形県</a>
+    <a target="blank" href="./questions/宮城県.html" onClick="sound()">宮城県</a>
+    <a target="blank" href="./questions/福島県.html" onClick="sound()">福島県</a><br>
+    <a target="blank" href="./questions/茨城県.html" onClick="sound()">茨城県</a>
+    <a target="blank" href="./questions/栃木県.html" onClick="sound()">栃木県</a>
+    <a target="blank" href="./questions/群馬県.html" onClick="sound()">群馬県</a>
+    <a target="blank" href="./questions/埼玉県.html" onClick="sound()">埼玉県</a>
+    <a target="blank" href="./questions/千葉県.html" onClick="sound()">千葉県</a>
+    <a target="blank" href="./questions/東京都.html" onClick="sound()">東京都</a>
+    <a target="blank" href="./questions/神奈川県.html" onClick="sound()">神奈川県</a><br>
+    <a target="blank" href="./questions/新潟県.html" onClick="sound()">新潟県</a>
+    <a target="blank" href="./questions/富山県.html" onClick="sound()">富山県</a>
+    <a target="blank" href="./questions/石川県.html" onClick="sound()">石川県</a>
+    <a target="blank" href="./questions/福井県.html" onClick="sound()">福井県</a>
+    <a target="blank" href="./questions/山梨県.html" onClick="sound()">山梨県</a>
+    <a target="blank" href="./questions/長野県.html" onClick="sound()">長野県</a>
+    <a target="blank" href="./questions/岐阜県.html" onClick="sound()">岐阜県</a><br>
+    <a target="blank" href="./questions/静岡県.html" onClick="sound()">静岡県</a>
+    <a target="blank" href="./questions/愛知県.html" onClick="sound()">愛知県</a>
+    <a target="blank" href="./questions/滋賀県.html" onClick="sound()">滋賀県</a>
+    <a target="blank" href="./questions/京都府.html" onClick="sound()">京都府</a>
+    <a target="blank" href="./questions/大阪府.html" onClick="sound()">大阪府</a>
+    <a target="blank" href="./questions/兵庫県.html" onClick="sound()">兵庫県</a>
+    <a target="blank" href="./questions/奈良県.html" onClick="sound()">奈良県</a><br>
+    <a target="blank" href="./questions/和歌山県.html" onClick="sound()">和歌山県</a>
+    <a target="blank" href="./questions/三重県.html" onClick="sound()">三重県</a>
+    <a target="blank" href="./questions/鳥取県.html" onClick="sound()">鳥取県</a>
+    <a target="blank" href="./questions/島根県.html" onClick="sound()">島根県</a>
+    <a target="blank" href="./questions/岡山県.html" onClick="sound()">岡山県</a>
+    <a target="blank" href="./questions/広島県.html" onClick="sound()">広島県</a>
+    <a target="blank" href="./questions/山口県.html" onClick="sound()">山口県</a>
+    <a target="blank" href="./questions/香川県.html" onClick="sound()">香川県</a>
+    <a target="blank" href="./questions/愛媛県.html" onClick="sound()">愛媛県</a>
+    <a target="blank" href="./questions/徳島県.html" onClick="sound()">徳島県</a>
+    <a target="blank" href="./questions/高知県.html" onClick="sound()">高知県</a>
+    <a target="blank" href="./questions/福岡県.html" onClick="sound()">福岡県</a>
+    <a target="blank" href="./questions/佐賀県.html" onClick="sound()">佐賀県</a>
+    <a target="blank" href="./questions/大分県.html" onClick="sound()">大分県</a><br>
+    <a target="blank" href="./questions/長崎県.html" onClick="sound()">長崎県</a>
+    <a target="blank" href="./questions/熊本県.html" onClick="sound()">熊本県</a>
+    <a target="blank" href="./questions/鹿児島県.html" onClick="sound()">鹿児島県</a>
+    <a target="blank" href="./questions/宮崎県.html" onClick="sound()">宮崎県</a>
+    <a target="blank" href="./questions/沖縄県.html" onClick="sound()">沖縄県</a>
   </div>
 </div>
-<div>
- <a target="blank" href="">北海道</a>
+<div class="team">
+  <input type="radio" name="team" id="t1" value="a"><label for="t1">チームA</label>
+  <input type="radio" name="team" id="t2" value="b"><label for="t2">チームB</label>
+  <input type="radio" name="team" id="t3" value="c"><label for="t3">チームC</label>
+  <input type="radio" name="team" id="t4" value="d"><label for="t4">チームD</label>
+  <input type="radio" name="team" id="t5" value="e"><label for="t5">チームE</label>
+  <input type="radio" name="team" id="t6" value="f"><label for="t6">チームF</label>
+  <input type="radio" name="team" id="t7" value="g"><label for="t7">チームG</label>
+  <input type="radio" name="team" id="t8" value="h"><label for="t8">チームH</label>
 </div>
+<audio id="sound" preload="auto">
+  <source src="./audio/horagai.mp3" type="audio/mp3">
+</audio>
 </body>
 </html>
