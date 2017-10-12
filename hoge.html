@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Japan Map - EXAMPLE 1</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script
+      src="./jquery-3.2.1.min.js"
+      ></script>
+    <script src="jquery.japan-map.min.js"></script>
+    <script>
+
+      function sound() {
+        $( '#sound' ).get(0).play() ;
+      }
+
+      $(function(){
+        var areas = [
+          {"code": 1 , "name": "東北地方", "color":"#ca93ea", "prefectures":[1,2,3,4,5,6,7]},
+          {"code": 2 , "name": "関東地方", "color":"#84b0f6", "prefectures":[8,9,10,11,12,13,14]},
+          {"code": 3 , "name": "中部地方", "color":"#77e18e", "prefectures":[15,16,17,18,19,20,21,22,23]},
+          {"code": 4 , "name": "近畿地方", "color":"#f2db7b", "prefectures":[24,25,26,27,28,29,30]},
+          {"code": 5 , "name": "中国地方", "color":"#f9ca6c", "prefectures":[31,32,33,34,35]},
+          {"code": 6 , "name": "四国地方", "color":"#fbad8b", "prefectures":[36,37,38,39]},
+          {"code": 7 , "name": "九州地方", "color":"#f7a6a6", "prefectures":[40,41,42,43,44,45,46,47]},
+        ];
+
+        var teamColor = "";
+
+        $("#map-container").japanMap({
+          backgroundColor: "white",
+          movesIslands: true,
+          areas: areas,
+          selection: "area",
+          width: 900,
+          showsPrefectureName: true,
+          drawsBoxLine: true,
+          prefectureNameType: "short",
+          lineColor : "#a0a0a0",
+          lineWidth: 1,
+          borderLineColor: "#f2fcff",
+          borderLineWith: 20,
+          drawsBoxLine: true,
+          showsAreaName : true,
+          showsPrefecturename: true,
+          font : "MS Mincho",
+          fontSize : 12,
+          fontColor : "areaColor",
+          fontShadowColor : "black",
+          onSelect : function(data){
+            var selectedTeam = $(':radio[name="team"]:checked').val();
+            if (selectedTeam == 'a') {
+              teamColor = "#ff0000";
+            } else if (selectedTeam == 'b') {
+              teamColor = "#ffa500";
+            } else if (selectedTeam == 'c') {
+              teamColor = "#ffff00";
+            } else if (selectedTeam == 'd') {
+              teamColor = "#7fff00";
+            } else if (selectedTeam == 'e') {
+              teamColor = "#00ffff";
+            } else if (selectedTeam == 'f') {
+              teamColor = "#1e90ff";
+            } else if (selectedTeam == 'g') {
+              teamColor = "#3cb371";
+            } else if (selectedTeam == 'h') {
+              teamColor = "#ff00ff";
+            } else if (selectedTeam == 'hoge') {
+              teamColor = "fffafa";
+            }
+
+            if (!confirm(data.name + " でよろしいですか？")) {
+              return false;
+            } else {
+              data.area.color = teamColor;
+            }
+          },
+          color: "#696969",
+        });
+      });
+    </script>
+    <style type="text/css">
+      .box {
+        float: left;
+        margin: 10px;
+      }
+      .boxContainer {
+        overflow: hidden;
+      }
+      /* clearfix */
+      .boxContainer:before,
+      .boxContainer:after {
+          content: "";
+          display: table;
+      }
+
+      .boxContainer:after {
+          clear: both;
+      }
+      .questions {
+        margin-top: 450px;
+        margin-left: 50px;
+        padding: 10px;
+        background-color: #ffffff;
+        width: 400px;
+      }
+      .team {
+        padding: 10px;
+          background-color: #ffffff;
+      }
+      body {
+        background-image: url("img/bg_B.jpg");
+        background-size: cover;
+      }
+    </style>
+</head>
+<body>
+<div class="boxContainer">
+  <div id="map-container" class="box"></div>
+</div>
+</body>
+</html>
