@@ -81,10 +81,6 @@
           borderLineColor: "#f2fcff",
           borderLineWith: 20,
           onSelect : function(data){
-            if (selected[data.code] == true) {
-              return;
-            }
-
             var selectedTeam = $(':radio[name="team"]:checked').val();
             if (selectedTeam == 'a') {
               teamColor = "#a7a5ea";
